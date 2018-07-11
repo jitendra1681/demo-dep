@@ -22,6 +22,7 @@ workflows:
   build-deploy:
     jobs:
       - deploy:
+          machine: true
           filters:
             branches:
               only: master
