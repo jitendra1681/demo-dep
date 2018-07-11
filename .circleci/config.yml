@@ -1,8 +1,24 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+    ...
+  deploy:
     steps:
       - checkout
-      - run: pip install -r requirements/dev.txt
+      - run:
+          name: Deploy Master to dokku
+          command:
+            - git remote add deploy-app dokku@54.177.34.184:deploy-app
+            - git push deploy-app master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
