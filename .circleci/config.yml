@@ -4,14 +4,18 @@
 #
 version: 2
 jobs:
+  build:
+    #...
   deploy:
+    machine:
+      enabled: true
     steps:
       - checkout
       - run:
           name: Deploy Master to dokku
           command:
-            - git remote add deploy-app dokku@54.177.34.184:deploy-app
-            - git push deploy-app master
+            git remote add deploy-app dokku@54.177.34.184:deploy-app
+            git push deploy-app master
 
 workflows:
   version: 2
