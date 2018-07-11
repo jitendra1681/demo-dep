@@ -1,0 +1,45 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: nomofomo-dev
+  username: postgres
+  password: linkites
+  host: localhost
+  port: 5433
+
+production:
+  <<: *default
+  database: nomofomo-dev
+  username: postgres
+  password: linkites
+  host: localhost
+  port: 5433
+
+test: &test
+  <<: *default
+  database: nomofomo-dev
+  username: postgres
+  password: linkites
+  host: localhost
+  port: 5433
+
+# production:
+#   <<: *default
+#   database: nomofomo_production
+#   username: nomofomo
+#   password: <%= ENV['NOMOFOMO_DATABASE_PASSWORD'] %>
+
+# production:
+#   <<: *default
+#   database: <%= ENV['RDS_DB_NAME'] %>
+#   username: <%= ENV['RDS_USERNAME'] %>
+#   password: <%= ENV['RDS_PASSWORD'] %>
+#   host: <%= ENV['RDS_HOSTNAME'] %>
+#   port: <%= ENV['RDS_PORT'] %>
+
+cucumber:
+  <<: *test
