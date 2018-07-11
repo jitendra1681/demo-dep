@@ -7,8 +7,6 @@ jobs:
   build:
     #...
   deploy:
-    machine:
-      enabled: true
     steps:
       - checkout
       - run:
@@ -22,7 +20,8 @@ workflows:
   build-deploy:
     jobs:
       - deploy:
-          machine: true
+          machine:
+            enabled: true
           filters:
             branches:
               only: master
