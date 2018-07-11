@@ -1,12 +1,13 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
+# Online reference
+#   https://github.com/circleci/circleci-docs/blob/master/jekyll/_cci2/migrating-from-1-2.md
 version: 2
 jobs:
-  deployment:
-    production:
-      branch: master
-      commands:
-        - git remote add deploy-app dokku@54.177.34.184:deploy-app
-        - git push deploy-app master
+  build:
+    working_directory: /dokku/deploy-app
+    steps:
+      - deploy:
+        name: Deploy
+        branch: master
+          commands:
+            - git remote add deploy-app dokku@54.177.34.184:deploy-app
+            - git push deploy-app master
