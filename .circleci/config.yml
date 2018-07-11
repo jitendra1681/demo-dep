@@ -1,10 +1,8 @@
 # Online reference
 #   https://github.com/circleci/circleci-docs/blob/master/jekyll/_cci2/migrating-from-1-2.md
 version: 2
-jobs:
-  deploy:
-    name: Deploy
+deployment:
     branch: master
-      commands:
-        - git remote add deploy-app dokku@54.177.34.184:deploy-app
-        - git push deploy-app master
+    commands:
+      - git remote add deploy-app dokku@54.177.34.184:deploy-app
+      - git push deploy-app master
