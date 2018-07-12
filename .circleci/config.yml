@@ -22,8 +22,8 @@ jobs:
       - run:
           name: deployfinal
           command: |
+            StrictHostKeyChecking=no
             git push deploy-app master
-            echo "yes"
 workflows:
   version: 2
   build_and_deploy:
