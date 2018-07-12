@@ -6,24 +6,28 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Test Markdown Files"
+          name: Install ruby dependencies
           command: |
-            
+
   deploy:
     docker:
       - image: circleci/ruby:2.5.1
     steps:
+      - checkout
       - run:
-          name: Deploy to dokku
-          command:
+          name: deploy
+          command: |
+            # ./node_modules/.bin/sls decrypt --stage $NODE_ENV --password $SECRETS_PASSWORD
             git remote add deploy-app dokku@54.177.34.184:deploy-app
             git push deploy-app master
-
 workflows:
   version: 2
-  build-deploy:
+  build_and_deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy:
           requires:
             - build
