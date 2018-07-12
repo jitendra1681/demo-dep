@@ -18,11 +18,10 @@ jobs:
           name: deploy
           command: |
             # ./node_modules/.bin/sls decrypt --stage $NODE_ENV --password $SECRETS_PASSWORD
-            git remote add deploy-app dokku@54.177.34.184:deploy-app
+            git remote add deploy-app admin@54.177.34.184:deploy-app
       - run:
           name: deployfinal
           command: |
-            StrictHostKeyChecking=no
             git push deploy-app master
 workflows:
   version: 2
