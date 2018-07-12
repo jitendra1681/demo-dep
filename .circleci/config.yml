@@ -20,7 +20,7 @@ jobs:
             # ./node_modules/.bin/sls decrypt --stage $NODE_ENV --password $SECRETS_PASSWORD
             git remote add dokku dokku@54.177.34.184:deploy-app
       - run:
-          name: deployfinalss
+          name: deployfinal
           command: |
             git push dokku master
 workflows:
