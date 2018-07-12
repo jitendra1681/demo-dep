@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install ruby dependencies
-          command: |
+          command: pwd
 
   deploy:
     docker:
