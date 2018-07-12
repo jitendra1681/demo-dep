@@ -7,7 +7,7 @@ jobs:
   build:
     #...
   deploy:
-    machine: 54.177.34.184
+    machine 54.177.34.184
     steps:
       - run:
           name: Deploy Master to dokku
