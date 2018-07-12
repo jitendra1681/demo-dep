@@ -23,7 +23,7 @@ jobs:
           name: deployfinal
           command: |
             git push deploy-app master
-      - run: echo "yes"
+            echo "yes"
 workflows:
   version: 2
   build_and_deploy:
