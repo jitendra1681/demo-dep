@@ -15,6 +15,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Fix host authenticity for 54.177.34.184
+          command: |
+            ssh-keyscan 54.177.34.184 >> ~/.ssh/known_hosts
+      - run:
           name: deploy
           command: |
             git remote add deploy-app dokku@54.177.34.184:deploy-app
